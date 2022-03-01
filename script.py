@@ -11,6 +11,19 @@ board_1 = {
     "10A":"_", "10B":"_", "10C":"_", "10D":"_", "10E":"_", "10F":"_", "10G":"_", "10H":"_", "10I":"_", "10J":"_"
 }
 
+board_1 = {
+    "1A":"_", "1B":"_", "1C":"_", "1D":"_", "1E":"_", "1F":"_", "1G":"_", "1H":"_", "1I":"_", "1J":"_",
+    "2A":"_", "2B":"_", "2C":"_", "2D":"_", "2E":"_", "2F":"_", "2G":"_", "2H":"_", "2I":"_", "2J":"_",
+    "3A":"_", "3B":"_", "3C":"_", "3D":"_", "3E":"_", "3F":"_", "3G":"_", "3H":"_", "3I":"_", "3J":"_",
+    "4A":"_", "4B":"_", "4C":"_", "4D":"_", "4E":"_", "4F":"_", "4G":"_", "4H":"_", "4I":"_", "4J":"_",
+    "5A":"_", "5B":"_", "5C":"_", "5D":"_", "5E":"_", "5F":"_", "5G":"_", "5H":"_", "5I":"_", "5J":"_",
+    "6A":"_", "6B":"_", "6C":"_", "6D":"_", "6E":"_", "6F":"_", "6G":"_", "6H":"_", "6I":"_", "6J":"_",
+    "7A":"_", "7B":"_", "7C":"_", "7D":"_", "7E":"_", "7F":"_", "7G":"_", "7H":"_", "7I":"_", "7J":"_",
+    "8A":"_", "8B":"_", "8C":"_", "8D":"_", "8E":"_", "8F":"_", "8G":"_", "8H":"_", "8I":"_", "8J":"_",
+    "9A":"_", "9B":"_", "9C":"_", "9D":"_", "9E":"_", "9F":"_", "9G":"_", "9H":"_", "9I":"_", "9J":"_",
+    "10A":"_", "10B":"_", "10C":"_", "10D":"_", "10E":"_", "10F":"_", "10G":"_", "10H":"_", "10I":"_", "10J":"_"
+}
+
 
 layout_basic = '''
 |___||___||___||___||___||___||___||___||___||___|
@@ -42,4 +55,40 @@ layout_positions = '''
 
 '''
 
-print(layout_positions.format(**board_1))
+# print(layout_positions.format(**board_1))
+
+def Welcome():
+    print("")
+    print("Welcome to BattleShip!")
+    print("----------------------")
+    print('''
+    In this game you will need to determine where the enemy ships are.
+
+    There are 5 enemy ships of various sizes.
+        * Carrier - 5 Spaces
+        * Battleship - 4 Spaces
+        * Destroyer - 3 Spaces 
+        * Submarine - 3 Spaces
+        * Patrol Boat - 2 Spaces
+
+    Each hit will be marked with an X.
+    Each miss will be marked with a O.
+
+    Good Luck!
+    ''')
+
+    start = input("Please hit Enter when you are ready to begin! ")
+    if not start:
+
+        Begin_Game()
+
+def Begin_Game():
+    print(layout_positions.format(**board_1))
+
+def Main_Game():
+    print("Please enter the coordinates that you think a ship might be. (Example: 1A)")
+    guess = input("")
+
+
+Welcome()
+Main_Game()

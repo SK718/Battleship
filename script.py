@@ -1,7 +1,6 @@
 # from tabnanny import check
-
-
-from unittest import skip
+# from unittest import skip
+# from wsgiref.util import shift_path_info
 
 
 board_1 = {
@@ -62,6 +61,7 @@ layout_positions = '''
 '''
 
 total_ships = 5
+ships_hit = 0
 
 def welcome():
     print("")
@@ -100,11 +100,17 @@ def Input_Coordinate():
 
 
 def guess(coordinate):
+    
     if board_2[coordinate] == "S":
         board_1[coordinate] = "X"
         print(layout_positions.format(**board_1))
         print("Hit!!")
         check_ships()
+        if ships_hit == total_ships:
+            print ("\nYou Won! You Sunk The Battleships!")
+            play_again = input("Please hit Enter if you would like to play again! ")
+            if not play_again:
+                begin_game()
         print("")
         print("Pick another spot.")
         Input_Coordinate()
@@ -123,6 +129,7 @@ class Ships:
         self.count = count
         
     def grid_options(self):
+        global ships_hit
         l = []
         if self.count == 0:
             for spot in self.board:
@@ -131,6 +138,7 @@ class Ships:
             if self.board == l:
                 print("You Sunk The {}!!".format(self.name))
                 self.count += 1
+                ships_hit += 1
         else:
             pass
             

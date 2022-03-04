@@ -100,25 +100,28 @@ def Input_Coordinate():
 
 
 def guess(coordinate):
-    
-    if board_2[coordinate] == "S":
-        board_1[coordinate] = "X"
-        print(layout_positions.format(**board_1))
-        print("Hit!!")
-        check_ships()
-        if ships_hit == total_ships:
-            print ("\nYou Won! You Sunk The Battleships!")
-            play_again = input("Please hit Enter if you would like to play again! ")
-            if not play_again:
-                begin_game()
-        print("")
-        print("Pick another spot.")
-        Input_Coordinate()
-    else:
-        board_1[coordinate] = "O"
-        print(layout_positions.format(**board_1))
-        print("Miss")
-        print("Try Again")
+    try:
+        if board_2[coordinate] == "S":
+            board_1[coordinate] = "X"
+            print(layout_positions.format(**board_1))
+            print("Hit!!")
+            check_ships()
+            if ships_hit == total_ships:
+                print ("\nYou Won! You Sunk The Battleships!")
+                play_again = input("Please hit Enter if you would like to play again! ")
+                if not play_again:
+                    begin_game()
+            print("")
+            print("Pick another spot.")
+            Input_Coordinate()
+        else:
+            board_1[coordinate] = "O"
+            print(layout_positions.format(**board_1))
+            print("Miss")
+            print("Try Again")
+            Input_Coordinate()
+    except KeyError:
+        print("That isn't a correct coordinate. Please try again.")
         Input_Coordinate()
 
 class Ships:
